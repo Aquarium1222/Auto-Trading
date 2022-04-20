@@ -1,3 +1,6 @@
+from dataset import Dataset
+
+
 # You can write code above the if-main block.
 
 
@@ -17,19 +20,22 @@ if __name__ == '__main__':
                         help='output file name')
     args = parser.parse_args()
 
+    dataset = Dataset('data/training.csv')
+    print(dataset.open_price)
+
     # The following part is an example.
     # You can modify it at will.
-    training_data = load_data(args.training)
-    trader = Model()
-    trader.train(training_data)
-
-    testing_data = load_data(args.testing)
-    with open(args.output, 'w') as output_file:
-        for row in testing_data:
-            # We will perform your action as the open price in the next day.
-            action = trader.predict_action(row)
-            output_file.write(action)
-
-            # this is your option, you can leave it empty.
-            trader.re_training(i)
+    # training_data = load_data(args.training)
+    # trader = Model()
+    # trader.train(training_data)
+    #
+    # testing_data = load_data(args.testing)
+    # with open(args.output, 'w') as output_file:
+    #     for row in testing_data:
+    #         # We will perform your action as the open price in the next day.
+    #         action = trader.predict_action(row)
+    #         output_file.write(action)
+    #
+    #         # this is your option, you can leave it empty.
+    #         trader.re_training(i)
 
