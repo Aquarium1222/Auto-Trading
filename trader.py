@@ -1,4 +1,5 @@
-from dataset import Dataset
+from config import *
+from dataset.stock_dataset import StockDataset
 
 
 # You can write code above the if-main block.
@@ -20,8 +21,9 @@ if __name__ == '__main__':
                         help='output file name')
     args = parser.parse_args()
 
-    dataset = Dataset('data/training.csv')
-    print(dataset.open_price)
+    dataset = StockDataset('data/training.csv', method=Constant.Method['SVR'])
+    print(dataset.x)
+    print(dataset.y)
 
     # The following part is an example.
     # You can modify it at will.
