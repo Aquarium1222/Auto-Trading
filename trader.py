@@ -1,5 +1,6 @@
 from config import *
 from dataset.stock_dataset import StockDataset
+from model.svr_stock import SVRStock
 
 
 # You can write code above the if-main block.
@@ -22,8 +23,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     dataset = StockDataset('data/training.csv', method=Constant.Method['SVR'])
-    print(dataset.x)
-    print(dataset.y)
+    model = SVRStock(dataset)
+    model.train()
 
     # The following part is an example.
     # You can modify it at will.
