@@ -1,11 +1,26 @@
+from enum import Enum
+
+
 class Constant:
-    Method = {
-        'SVR': 0,
-        'MA': 1
-    }
-    TRAIN_SIZE = 0.8
+    class Method(Enum):
+        SVR = 0
+        RF = 1
+
+    class State(Enum):
+        Nothing = 0
+        Hold = 1
+        Short = 2
+
+    class Action(Enum):
+        Buy = 1
+        NoAction = 0
+        Sell = -1
+
+    TRAIN_SIZE = 0.9
+    N_VAL = 20
 
 
 class Hp:
-    X_LEN = 3
+    SVR_X_LEN = 6
     SVR_C = 0.1
+    Y_LEN = 2

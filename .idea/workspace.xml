@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="94ec4aa0-a579-45da-a4ea-a2b6ebdf0a76" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/dataset/data_slicer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/preprocessor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/strategy/stock_context.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/strategy/stock_state.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/stock_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/stock_dataset.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/svr_stock.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/svr_stock.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trader.py" beforeDir="false" afterPath="$PROJECT_DIR$/trader.py" afterDir="false" />
@@ -16,6 +22,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Jupyter Notebook" />
         <option value="Python Script" />
       </list>
     </option>
@@ -35,9 +42,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Electricity-Forecasting" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/strategy" />
       <recent name="$PROJECT_DIR$/dataset" />
     </key>
   </component>
@@ -80,7 +90,8 @@
       <updated>1650436685655</updated>
       <workItem from="1650436686898" duration="3235000" />
       <workItem from="1650557761409" duration="2885000" />
-      <workItem from="1650614288516" duration="1829000" />
+      <workItem from="1650614288516" duration="14290000" />
+      <workItem from="1650803046830" duration="12166000" />
     </task>
     <servers />
   </component>
@@ -88,6 +99,6 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Auto_Trading$trader.coverage" NAME="trader Coverage Results" MODIFIED="1650616112705" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Auto_Trading$trader.coverage" NAME="trader Coverage Results" MODIFIED="1650831136882" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
