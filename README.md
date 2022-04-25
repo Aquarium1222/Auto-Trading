@@ -20,20 +20,20 @@ SVR_1：找到某一個超平面，使所有的樣本點離超平面的偏差總
 SVR_2：找到某一個超平面，使所有的樣本點離超平面的偏差總和最小化，並預測未來兩天之開盤價。
 
 ### Framework 2
-<img src="./SVR_2.png" alt="Cover" width="70%"/>
+<img src="./SVR_2.png" alt="Cover" width="90%"/>
 
 ---
 
 ### Data analysis
 * 三種狀態：沒有持股、持有一股、做空一股
 * 三種動作：買入、無動作、賣出（沒有持股時執行賣出動作為做空）
-<img src="./0_slot.png" alt="Cover" width="60%"/>
+<img src="./0_slot.png" alt="Cover" width="70%"/>
 
-<img src="./1_slot.png" alt="Cover" width="60%"/>
+<img src="./1_slot.png" alt="Cover" width="70%"/>
 
-<img src="./-1_slot.png" alt="Cover" width="60%"/>
+<img src="./-1_slot.png" alt="Cover" width="70%"/>
 
 ---
 
 ### Data pre-processing
-取出開盤價，用以預測未來的開盤價
+取出開盤價，並作最小值最大值正規化 (Min-Max Normalization)，這樣會較好訓練，並用處理完的開盤價資料去預測未來的開盤價
