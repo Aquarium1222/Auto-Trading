@@ -24,7 +24,7 @@ SVR_2：找到某一個超平面，使所有的樣本點離超平面的偏差總
 
 ---
 
-### Data analysis
+### Action analysis
 * 三種狀態：沒有持股、持有一股、做空一股
 * 三種動作：買入、無動作、賣出（沒有持股時執行賣出動作為做空）
 <img src="./0_slot.png" alt="Cover" width="70%"/>
@@ -37,3 +37,9 @@ SVR_2：找到某一個超平面，使所有的樣本點離超平面的偏差總
 
 ### Data pre-processing
 取出開盤價，並作最小值最大值正規化 (Min-Max Normalization)，這樣會較好訓練，並用處理完的開盤價資料去預測未來的開盤價
+
+---
+
+### Parameter Setting
+下圖為利用 SVR_1 預測一天開盤價（橘色線段）、利用 SVR_2 預測兩天開盤價（非藍色與非橘色的其餘線段），圖片標題為 SVR_C 的參數設置為多少以及賺得的利潤，利潤藉由預測出來之開盤價與上述 Action analysis 求得，最終 SVR_C 設為 11。
+<img src="./SVR_C.png" alt="Cover" width="70%"/>
