@@ -22,5 +22,9 @@ class Constant:
 
 class Hp:
     SVR_X_LEN = 3
+<<<<<<< HEAD
     SVR_C = 0.05
+=======
+    SVR_C = 11
+>>>>>>> 9f5ca70ee5e6d9d0e14596bcbb82e3ff633c1493
     Y_LEN = 2

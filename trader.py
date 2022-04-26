@@ -13,16 +13,16 @@ from strategy.stock_state import *
 # You can write code above the if-main block.
 def predict_2_step(model, x):
     if len(x.shape) == 1:
-        x = np.expand_dims(x, axis=0)
+        x = np.expand_dims(x, axis = 0)
     pred_step1 = model.predict(x)
-    x_step2 = np.insert(x, Hp.SVR_X_LEN, pred_step1, axis=1)
-    x_step2 = np.delete(x_step2, 0, axis=1)
+    x_step2 = np.insert(x, Hp.SVR_X_LEN, pred_step1, axis = 1)
+    x_step2 = np.delete(x_step2, 0, axis = 1)
     pred_step2 = model.predict(x_step2)
     return [pred_step1, pred_step2]
 
 
 def reverse_2_step(preprocessor, preds):
-    r_preds = [np.squeeze(preprocessor.reverse(np.expand_dims(pred, axis=1))) for pred in preds]
+    r_preds = [np.squeeze(preprocessor.reverse(np.expand_dims(pred, axis = 1))) for pred in preds]
     return r_preds
 
 
@@ -32,14 +32,14 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--training',
-                        default='training_data.csv',
-                        help='input training data file name')
+                        default = 'training_data.csv',
+                        help = 'input training data file name')
     parser.add_argument('--testing',
-                        default='testing_data.csv',
-                        help='input testing data file name')
+                        default = 'testing_data.csv',
+                        help = 'input testing data file name')
     parser.add_argument('--output',
-                        default='output.csv',
-                        help='output file name')
+                        default = 'output.csv',
+                        help = 'output file name')
     args = parser.parse_args()
 
     preprocessor = Preprocessor(Constant.Method.SVR)
@@ -49,8 +49,8 @@ if __name__ == '__main__':
     model.train()
     val_x, val_y = data_slicer.val_datas
     pred_y = model.predict(val_x)
-    val_y = preprocessor.reverse(np.expand_dims(val_y, axis=1))
-    pred_y = preprocessor.reverse(np.expand_dims(pred_y, axis=1))
+    val_y = preprocessor.reverse(np.expand_dims(val_y, axis = 1))
+    pred_y = preprocessor.reverse(np.expand_dims(pred_y, axis = 1))
 
     preds = []
     for x in val_x:
@@ -82,12 +82,17 @@ if __name__ == '__main__':
               'Predict after tomorrow price: {}\n'
               'Action: {}\n'
               'Profit: {}\n'
-              'State: {}\n\n'.format(base_price, real_tmr_price, pred_2_step[0], pred_2_step[1], action, profit, stock_context.state))
+              'State: {}\n\n'.format(base_price, real_tmr_price, pred_2_step[0], pred_2_step[1], action, profit,
+                                     stock_context.state))
 
         plt.plot(range(i, i + 2), pred_2_step)
 
-    plt.plot(range(len(val_y)), val_y)
-    plt.plot(range(len(val_y)), pred_y)
+    plt.plot(range(len(val_y)), val_y, label = 'real price')
+    plt.plot(range(len(val_y)), pred_y, label = 'SVR_1')
+    plt.xlabel('day')
+    plt.ylabel('price')
+    plt.title('SVR_C = [' + str(Hp.SVR_C) + ']\n' + 'profit = ' + str(profit))
+    plt.legend()
     plt.show()
 
     # The following part is an example.
@@ -105,4 +110,3 @@ if __name__ == '__main__':
     #
     #         # this is your option, you can leave it empty.
     #         trader.re_training(i)
-
