@@ -6,15 +6,24 @@ class Constant:
         SVR = 0
         RF = 1
 
+        def __int__(self):
+            return self.value
+
     class State(Enum):
         Nothing = 0
         Hold = 1
         Short = 2
 
+        def __int__(self):
+            return self.value
+
     class Action(Enum):
         Buy = 1
         NoAction = 0
         Sell = -1
+
+        def __int__(self):
+            return self.value
 
     TRAIN_SIZE = 0.9
     N_VAL = 20
@@ -22,9 +31,5 @@ class Constant:
 
 class Hp:
     SVR_X_LEN = 3
-<<<<<<< HEAD
-    SVR_C = 0.05
-=======
-    SVR_C = 11
->>>>>>> 9f5ca70ee5e6d9d0e14596bcbb82e3ff633c1493
+    SVR_C = 3
     Y_LEN = 2

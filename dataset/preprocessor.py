@@ -27,7 +27,6 @@ class Preprocessor:
         for i in range(Hp.SVR_X_LEN, len(datas)):
             x.append(np.squeeze(datas[i - Hp.SVR_X_LEN:i]))
             y.append(np.squeeze(datas[i]))
-        print(x)
         return x, y
 
     def _rf_preproc(self, datas):

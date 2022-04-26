@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
 
 from config import *
 from dataset.preprocessor import Preprocessor
@@ -32,18 +33,18 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--training',
-                        default = 'training_data.csv',
-                        help = 'input training data file name')
+                        default='data/training.csv',
+                        help='input training data file name')
     parser.add_argument('--testing',
-                        default = 'testing_data.csv',
-                        help = 'input testing data file name')
+                        default='data/testing.csv',
+                        help='input testing data file name')
     parser.add_argument('--output',
-                        default = 'output.csv',
-                        help = 'output file name')
+                        default='output.csv',
+                        help='output file name')
     args = parser.parse_args()
 
     preprocessor = Preprocessor(Constant.Method.SVR)
-    dataset = StockDataset(preprocessor, 'data/training.csv', 'data/testing.csv')
+    dataset = StockDataset(preprocessor, args.training, args.testing)
     data_slicer = DataSlicer(dataset)
     model = SVRStock(dataset, data_slicer)
     model.train()
@@ -61,9 +62,11 @@ if __name__ == '__main__':
     val_x = preprocessor.reverse(val_x)
     profit = 0
     prev_pred = 0
+    action_list = []
     for i, (pred_2_step, today_price, real_tmr_price) in enumerate(zip(preds, np.array(val_x)[:, -1], val_y)):
         base_price = today_price if stock_context.state == Constant.State.Nothing else stock_context.stock_price
         action = stock_context.action(base_price, pred_2_step[0], pred_2_step[1])
+        action_list.append(int(action))
         if action == Constant.Action.Sell:
             profit += real_tmr_price
         if action == Constant.Action.Buy:
@@ -86,27 +89,13 @@ if __name__ == '__main__':
                                      stock_context.state))
 
         plt.plot(range(i, i + 2), pred_2_step)
+    output = pd.DataFrame(action_list)
+    output.to_csv(args.output, index=False, header=False)
 
-    plt.plot(range(len(val_y)), val_y, label = 'real price')
-    plt.plot(range(len(val_y)), pred_y, label = 'SVR_1')
+    plt.plot(range(len(val_y)), val_y, label='real price')
+    plt.plot(range(len(val_y)), pred_y, label='SVR_1')
     plt.xlabel('day')
     plt.ylabel('price')
     plt.title('SVR_C = [' + str(Hp.SVR_C) + ']\n' + 'profit = ' + str(profit))
     plt.legend()
     plt.show()
-
-    # The following part is an example.
-    # You can modify it at will.
-    # training_data = load_data(args.training)
-    # trader = Model()
-    # trader.train(training_data)
-    #
-    # testing_data = load_data(args.testing)
-    # with open(args.output, 'w') as output_file:
-    #     for row in testing_data:
-    #         # We will perform your action as the open price in the next day.
-    #         action = trader.predict_action(row)
-    #         output_file.write(action)
-    #
-    #         # this is your option, you can leave it empty.
-    #         trader.re_training(i)

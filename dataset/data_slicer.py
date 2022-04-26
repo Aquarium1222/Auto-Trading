@@ -6,7 +6,7 @@ class DataSlicer:
         self.__dataset = dataset
         print(len(self.__dataset))
         self.__train_end = int((len(dataset) - Constant.N_VAL) * Constant.TRAIN_SIZE)
-        self.__test_end = len(dataset) - 20
+        self.__test_end = len(dataset) - Constant.N_VAL + 1
         self.__val_end = len(dataset)
 
     @property
