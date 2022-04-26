@@ -21,6 +21,6 @@ class Constant:
 
 
 class Hp:
-    SVR_X_LEN = 6
-    SVR_C = 0.1
+    SVR_X_LEN = 3
+    SVR_C = 0.05
     Y_LEN = 2
